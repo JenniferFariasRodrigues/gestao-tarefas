@@ -1,4 +1,4 @@
-package domain;
+package br.com.jennifer.backend.domain;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,7 +1,7 @@
-package repository;
+package br.com.jennifer.backend.repository;
 
 
-import domain.Project;
+import br.com.jennifer.backend.domain.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {}
