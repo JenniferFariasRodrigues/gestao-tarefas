@@ -4,7 +4,7 @@
 </p>
 <p align="center">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGakkUEbXyfann4M16v9CV-sTa915cUOdh9g&s" height="150" width="200">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/H2_logo.png/250px-H2_logo.png" height="150" width="200">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/H2_logo.png/250px-H2_logo.png" height="170" width="200">
 </p>
 
 

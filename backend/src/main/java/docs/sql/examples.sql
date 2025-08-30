@@ -1,17 +1,35 @@
---Describe about pagination, task by project, status
--- Pagination (DB2/H2)
-SELECT * FROM TAREFA
-ORDER BY DATA_CRIACAO DESC
-OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY;
+-- =========================================================
+-- SQL EXAMPLES (compatible with DB2 and H2 in MODE=DB2)
+-- Pagination | Task x Project JOIN (with project filter) | Group By
+-- =========================================================
 
--- Join Task x Project
-SELECT t.ID, t.TITULO, t.STATUS, t.DATA_CRIACAO, p.NOME AS PROJETO
+-- 1) Pagination 
+SELECT
+  t.ID,
+  t.TITULO,
+  t.STATUS,
+  t.DATA_CRIACAO,
+  t.ID_PROJETO
+FROM TAREFA t
+ORDER BY t.DATA_CRIACAO DESC
+OFFSET 0 ROWS FETCH FIRST 5 ROWS ONLY;
+
+-- 2) JOIN between TAREFA and PROJETO 
+SELECT
+  t.ID,
+  t.TITULO,
+  t.STATUS,
+  t.DATA_CRIACAO,
+  p.NOME AS PROJETO
 FROM TAREFA t
 JOIN PROJETO p ON p.ID = t.ID_PROJETO
+WHERE p.ID = 2
 ORDER BY t.DATA_CRIACAO DESC;
 
--- Group by STATUS
-SELECT STATUS, COUNT(*) AS QTD
-FROM TAREFA
-GROUP BY STATUS
-ORDER BY QTD DESC;
+-- 3) Group by STATUS 
+SELECT
+  t.STATUS,
+  COUNT(*) AS TOTAL
+FROM TAREFA t
+GROUP BY t.STATUS
+ORDER BY TOTAL DESC;
