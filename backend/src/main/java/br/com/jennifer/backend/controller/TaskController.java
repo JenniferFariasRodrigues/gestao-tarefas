@@ -47,4 +47,9 @@ public class TaskController {
   public List<Project> projects() {
     return projectRepository.findAll(org.springframework.data.domain.Sort.by("name"));
   }
+  
+  @PutMapping("/{id}")
+  public TaskResponse update(@PathVariable Long id, @Valid @RequestBody TaskRequest req) {
+    return taskService.update(id, req);
+  }
 }
