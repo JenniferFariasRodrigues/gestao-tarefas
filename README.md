@@ -21,23 +21,35 @@ para cadastro, listagem, paginação e gerenciamento de tarefas e projetos.
 
 Este projeto foi criado para gerenciar tarefas vinculadas a projetos.  
 Cada Task possui título, descrição, status, data de criação e referência a um Project.  
-A API oferece endpoints para criar, listar (com paginação e filtro por projeto) e remover tarefas.
+A API oferece endpoints para criar, listar (com paginação e filtro por projeto), atualizar e remover tarefas.
 
 ---
 
-## ** Funcionalidades Implementadas **
+## **Funcionalidades Implementadas**
 
 - Estrutura inicial do projeto **Spring Boot**.  
 - Criação das entidades **Project** e **Task**.  
 - Repositórios base com **Spring Data JPA**.  
 - DTOs (`TaskRequest`, `TaskResponse`) para padronização da API.  
-- Serviços (`TaskService`) com regras de negócio.  
-- Controllers REST com endpoints:  
-  - `GET /tasks` → lista paginada de tarefas (com filtro por projeto e ordenação desc).  
-  - `POST /tasks` → cria uma nova tarefa (validação com `@Valid`).  
-  - `DELETE /tasks/{id}` → remove tarefa por ID.  
-  - `GET /tasks/projects` → lista todos os projetos cadastrados.  
-- Integração com Postman testada.
+- Serviço (`TaskService`) com regras de negócio.  
+
+- Controllers REST com endpoints:
+
+  - `GET /tasks` → lista paginada (filtro opcional por `projectId`, ordenada por `createdAt` desc).
+
+  - `POST /tasks` → cria tarefa (`@Valid` nos campos).
+
+  - `PUT /tasks/{id}` → atualiza título/descrição/status/projeto.
+
+  - `DELETE /tasks/{id}` → remove tarefa por ID.
+
+  - `GET /tasks/projects` → lista todos os projetos.
+
+- **Swagger / OpenAPI** para documentação e testes.
+
+- **H2 em memória** com **modo DB2** para simular SQL e facilitar o desenvolvimento.
+
+- Integração testada via Postman.
 
 ---
 
@@ -46,15 +58,14 @@ A API oferece endpoints para criar, listar (com paginação e filtro por projeto
 
 - **Java 17**  
 - **Spring Boot 3.5.5**  
-- **Spring Data JPA**  
+- **Spring Web / Spring Data JPA / Validation**  
 - **Hibernate**  
 - **Lombok** 
-- **H2 Database** (em memória, para desenvolvimento e testes)  
+- **H2 Database** (memória; `MODE=DB2`) 
 - **Maven** 
 - **Angular 17**  
 
 ---
-
 
 ## **Estrutura do Projeto**
 
@@ -77,7 +88,7 @@ backend
 ```
 ---
 
-## ** Como Rodar o Projeto**
+## **Como Rodar o Projeto**
 
 ### **1️ - Clonar o repositório**
 ```bash
@@ -121,8 +132,6 @@ GET http://localhost:8080/tasks/projects
 ---
 
 ##  Próximos Passos
-
-
 
 ---
 
