@@ -1,4 +1,4 @@
-package br.com.jennifer.backend.web;
+package br.com.jennifer.backend.controller;
 
 import br.com.jennifer.backend.dto.TaskRequest;
 import br.com.jennifer.backend.dto.TaskResponse;
