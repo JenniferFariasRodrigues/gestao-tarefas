@@ -1,10 +1,12 @@
 <p align="center">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTynGNI5-C7YGr5Wx5owPqTBG7xL2fv_Zh3bQ&s.jpeg" height="150" width="230">  
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTynGNI5-C7YGr5Wx5owPqTBG7xL2fv_Zh3bQ&s.jpeg" height="150" width="200">
   <img src="https://file.labex.io/namespace/df87b950-1f37-4316-bc07-6537a1f2c481/java/lab-your-first-java-lab/assets/java.svg" height="150" width="200">
-  <br> 
+</p>
+<p align="center">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGakkUEbXyfann4M16v9CV-sTa915cUOdh9g&s" height="150" width="200">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/H2_logo.png/250px-H2_logo.png" height="150" width="200">
 </p>
+
 
 <h1 align="center"> Gestão de Tarefas - API Backend</h1>
 
