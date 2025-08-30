@@ -16,40 +16,37 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
 
-  private final TaskService taskService;
-  private final ProjectRepository projectRepository;
+	private final TaskService taskService;
+	private final ProjectRepository projectRepository;
 
-  public TaskController(TaskService taskService, ProjectRepository projectRepository) {
-    this.taskService = taskService;
-    this.projectRepository = projectRepository;
-  }
+	public TaskController(TaskService taskService, ProjectRepository projectRepository) {
+		this.taskService = taskService;
+		this.projectRepository = projectRepository;
+	}
 
-  @GetMapping
-  public Page<TaskResponse> list(
-      @RequestParam(defaultValue = "0") Integer page,
-      @RequestParam(defaultValue = "10") Integer size,
-      @RequestParam(required = false) Long projectId
-  ) {
-    return taskService.list(page, size, projectId);
-  }
+	@GetMapping
+	public Page<TaskResponse> list(@RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "10") Integer size, @RequestParam(required = false) Long projectId) {
+		return taskService.list(page, size, projectId);
+	}
 
-  @PostMapping
-  public TaskResponse create(@Valid @RequestBody TaskRequest request) {
-    return taskService.create(request);
-  }
+	@PostMapping
+	public TaskResponse create(@Valid @RequestBody TaskRequest request) {
+		return taskService.create(request);
+	}
 
-  @DeleteMapping("/{id}")
-  public void delete(@PathVariable Long id) {
-    taskService.delete(id);
-  }
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		taskService.delete(id);
+	}
 
-  @GetMapping("/projects")
-  public List<Project> projects() {
-    return projectRepository.findAll(org.springframework.data.domain.Sort.by("name"));
-  }
-  
-  @PutMapping("/{id}")
-  public TaskResponse update(@PathVariable Long id, @Valid @RequestBody TaskRequest req) {
-    return taskService.update(id, req);
-  }
+	@GetMapping("/projects")
+	public List<Project> projects() {
+		return projectRepository.findAll(org.springframework.data.domain.Sort.by("name"));
+	}
+
+	@PutMapping("/{id}")
+	public TaskResponse update(@PathVariable Long id, @Valid @RequestBody TaskRequest req) {
+		return taskService.update(id, req);
+	}
 }
