@@ -32,6 +32,11 @@ public class GlobalExceptionHandler {
     return build(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error", req);
   }
 
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<Map<String,String>> handle(IllegalArgumentException ex) {
+    return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+  }
+
   private ResponseEntity<Map<String, Object>> build(HttpStatus status, String message, WebRequest req) {
     Map<String, Object> body = new LinkedHashMap<>();
     body.put("timestamp", Instant.now().toString());
