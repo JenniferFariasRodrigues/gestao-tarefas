@@ -1,4 +1,4 @@
-package dto;
+package br.com.jennifer.backend.dto;
 
 import jakarta.validation.constraints.*;
 
