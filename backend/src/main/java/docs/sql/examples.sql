@@ -1,5 +1,5 @@
 -- =========================================================
--- SQL EXAMPLES (compatible with DB2 and H2 in MODE=DB2)
+-- SQL EXAMPLES
 -- Pagination | Task x Project JOIN (with project filter) | Group By
 -- =========================================================
 
