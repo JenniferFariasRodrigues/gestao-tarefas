@@ -222,8 +222,6 @@ GET http://localhost:8080/tasks/projects
 
 ---
 
----
-
 ## **Experiência Flex - parte 4**
 
 <details>
