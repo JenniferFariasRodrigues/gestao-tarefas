@@ -1,63 +1,76 @@
-<h2>Tarefas</h2>
+<section class="container">
+  <header class="center">
+    <h1>Tarefas do projeto</h1>
+  </header>
 
-<button (click)="reload()">Recarregar</button>
 
-<!-- Formulário de criação -->
-<form [formGroup]="form" (ngSubmit)="submit()" style="margin-top: 16px; padding: 12px; border: 1px solid #ddd">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-    <label>
-      Título *
-      <input type="text" formControlName="title" />
-    </label>
+  <!-- CARD: formulário (Reactive Forms) -->
+  <form class="card form-grid" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field">
+      <label for="title"><strong>Título *</strong></label>
+      <input id="title" formControlName="title" />
+    </div>
 
-    <label>
-      Projeto *
-      <select formControlName="projectId">
+    <div class="field">
+      <label for="projectId"><strong>Projeto *</strong></label>
+      <select id="projectId" formControlName="projectId">
         <option [ngValue]="null">Selecione...</option>
         <option *ngFor="let p of projects" [ngValue]="p.id">{{ p.name }}</option>
       </select>
-    </label>
+    </div>
 
-    <label style="grid-column: 1 / -1">
-      Descrição
-      <textarea rows="2" formControlName="description"></textarea>
-    </label>
+    <div class="field field-col-2">
+      <label for="description"><strong>Descrição</strong></label>
+      <textarea id="description" rows="3" formControlName="description"></textarea>
+    </div>
 
-    <label>
-      Status *
-      <select formControlName="status">
+    <div class="field">
+      <label for="status"><strong>Status *</strong></label>
+      <select id="status" formControlName="status">
         <option value="OPEN">OPEN</option>
         <option value="IN_PROGRESS">IN_PROGRESS</option>
         <option value="DONE">DONE</option>
       </select>
-    </label>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        Criar tarefa
+      </button>
+    </div>
+  </form>
+
+  <!-- CARD: tabela -->
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Status</th>
+          <th>Projeto</th>
+          <th>Criada em</th>
+          <th class="col-actions">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of page?.content">
+          <td>{{ t.id }}</td>
+          <td>{{ t.title }}</td>
+          <td>{{ t.status }}</td>
+          <td>{{ t.projectName }}</td>
+          <td>{{ t.createdAt | date:'M/d/yy, h:mm a' }}</td>
+          <td class="col-actions">
+            <button class="btn btn-danger" (click)="remove(t.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="center">
+    <button class="btn btn-secondary" (click)="reload()" [disabled]="loading">
+      {{ loading ? 'Atualizando...' : 'Atualizar lista' }}
+    </button>
   </div>
 
-  <button type="submit" [disabled]="form.invalid" style="margin-top: 12px;">Criar tarefa</button>
-</form>
-
-<!-- Tabela -->
-<table border="1" cellpadding="8" cellspacing="0" style="margin-top: 16px; width: 100%; max-width: 820px;">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Título</th>
-      <th>Status</th>
-      <th>Projeto</th>
-      <th>Criada em</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let t of page?.content">
-      <td>{{ t.id }}</td>
-      <td>{{ t.title }}</td>
-      <td>{{ t.status }}</td>
-      <td>{{ t.projectName }}</td>
-      <td>{{ t.createdAt | date:'short' }}</td>
-      <td>
-        <button (click)="remove(t.id)">Excluir</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+</section>
