@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 import {
   TaskService,
   TaskResponse,
@@ -8,6 +10,7 @@ import {
   Page,
   CreateTaskRequest,
 } from '../core/services/task.service';
+import { finalize, tap } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
@@ -31,6 +34,8 @@ export class TasksComponent implements OnInit {
   loading = false;
   lastUpdated: Date | null = null;
 
+  readonly minLoadingMs = 800;
+
   form = this.fb.group({
     title: ['', Validators.required],
     description: [''],
@@ -50,14 +55,24 @@ export class TasksComponent implements OnInit {
   }
 
   loadPage(): void {
+    if (this.loading) return;
     this.loading = true;
-    this.service.list(this.pageIndex, this.pageSize).subscribe({
-      next: (p) => (this.page = p),
-      error: () => (this.loading = false),
-      complete: () => {
-        this.loading = false;
-        this.lastUpdated = new Date();
-      },
+    const started = performance.now();
+
+    this.service.list(this.pageIndex, this.pageSize).pipe(
+      tap(p => this.page = p),
+      finalize(() => {
+        const elapsed = performance.now() - started;
+        const remaining = Math.max(0, this.minLoadingMs - elapsed);
+
+        setTimeout(() => {
+          this.loading = false;
+          this.lastUpdated = new Date();
+        }, remaining);
+      })
+    ).subscribe({
+      error: () => {
+      }
     });
   }
 
@@ -75,13 +90,39 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  remove(id: number): void {
-    if (!id) return;
-    if (confirm('Excluir tarefa?')) {
-      this.service.delete(id).subscribe({
-        complete: () => this.loadPage(),
-      });
-    }
+  async remove(id: number) {
+    const { isConfirmed } = await Swal.fire({
+      title: 'Excluir tarefa?',
+      text: 'Essa ação não pode ser desfeita.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, excluir',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true,
+      confirmButtonColor: '#dc2626',
+      cancelButtonColor: '#6b7280'
+    });
+
+    if (!isConfirmed) return;
+
+    this.service.delete(id).subscribe({
+      next: () => {
+        this.reload();
+        Swal.fire({
+          icon: 'success',
+          title: 'Tarefa excluída!',
+          timer: 1500,
+          showConfirmButton: false
+        });
+      },
+      error: () => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro ao excluir',
+          text: 'Tente novamente mais tarde.'
+        });
+      }
+    });
   }
 
   reload(): void {
