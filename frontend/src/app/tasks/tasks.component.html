@@ -1,8 +1,8 @@
 <section class="container">
-  <header class="page-header">
-    <h1>Tarefas</h1>
-    <button class="btn btn-secondary" (click)="reload()">Recarregar</button>
+  <header class="center">
+    <h1>Tarefas do projeto</h1>
   </header>
+
 
   <!-- CARD: formulário (Reactive Forms) -->
   <form class="card form-grid" [formGroup]="form" (ngSubmit)="submit()">
@@ -34,7 +34,9 @@
     </div>
 
     <div class="actions">
-      <button class="btn" type="submit" [disabled]="form.invalid">Criar tarefa</button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        Criar tarefa
+      </button>
     </div>
   </form>
 
@@ -65,4 +67,10 @@
       </tbody>
     </table>
   </div>
+  <div class="center">
+    <button class="btn btn-secondary" (click)="reload()" [disabled]="loading">
+      {{ loading ? 'Atualizando...' : 'Atualizar lista' }}
+    </button>
+  </div>
+
 </section>

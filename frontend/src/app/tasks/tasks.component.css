@@ -84,7 +84,7 @@ textarea:focus {
 
 /* Botões */
 .btn {
-  background: #111827;
+  background: #0a0a0a;
   color: #fff;
   border: 0;
   border-radius: 8px;
@@ -94,7 +94,7 @@ textarea:focus {
 }
 
 .btn:hover {
-  background: #0b1220;
+  background: #505059;
 }
 
 .btn-secondary {
@@ -156,4 +156,43 @@ textarea:focus {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 8px
+}
+
+
+.center .btn {
+  min-width: 180px;
+}
+
+section.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.card { margin-bottom: 16px; }
+
+
+/* Somente o botão "Criar tarefa" */
+.btn-primary {
+  background: #0d4fdc;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-primary:active {
+  background: #1e40af;
+}
+
+.btn-primary[disabled] {
+  opacity: .6;
+  cursor: not-allowed;
 }
