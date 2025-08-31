@@ -1,13 +1,19 @@
 :host {
   display: block;
+  min-height: 100dvh;
+
+  background:
+    radial-gradient(80% 60% at 10% -10%, #E8EEFF 0, rgba(232,238,255,0) 60%),
+    radial-gradient(70% 50% at 110% 0%, #FFE8F0 0, rgba(255,232,240,0) 55%),
+    #F6F8FB;
 }
 
 /* Centraliza a página */
 .container {
-  max-width: 1000px;         /* deixa o conteúdo no “meio” */
-  margin: 24px auto 64px;    /* centraliza horizontal */
-  padding: 0 16px;           /* respiro lateral */
-  background: #fff;          /* fundo branco como você pediu */
+  max-width: 1000px;
+  margin: 24px auto 64px;
+  padding: 0 16px;
+  background: #fff;
 }
 
 /* Cabeçalho */
@@ -143,7 +149,6 @@ textarea:focus {
   text-align: right;
 }
 
-/* Responsivo */
 @media (max-width: 720px) {
   .form-grid {
     grid-template-columns: 1fr;
@@ -177,10 +182,9 @@ section.container {
 
 .card { margin-bottom: 16px; }
 
-
 /* Somente o botão "Criar tarefa" */
 .btn-primary {
-  background: #0d4fdc;
+  background: #0a31b2fc;
   color: #fff;
 }
 
@@ -195,4 +199,54 @@ section.container {
 .btn-primary[disabled] {
   opacity: .6;
   cursor: not-allowed;
+}
+
+/* Ajuse fino na pagina*/
+.container {
+  max-width: 1000px;
+  margin: 32px auto 72px;
+  padding: 0 16px;
+}
+
+
+.card {
+  background: #fff;
+  border: 1px solid #eaeef3;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(31, 45, 61, 0.06);
+}
+
+.page-header h1 {
+  margin: 8px 0 20px;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  color: #1f2937;
+}
+
+.table tbody tr:nth-child(even) {
+  background: #fafcff;
+}
+.table tbody tr:hover {
+  background: #f3f6ff;
+}
+
+.btn { background: #111827; }
+.btn:hover { background: #2b3038; }
+.btn-secondary { background: #6b7280; }
+.btn-secondary:hover { background: #565d66; }
+.btn-danger { background: #dc2626; }
+.btn-danger:hover { background: #b91c1c; }
+
+.center { justify-content: center; margin: 18px 0 10px; }
+.center .btn { min-width: 200px; }
+
+.container {
+  margin: 0 auto 64px;
+  padding-top: 16px;
+}
+
+.container h1 {
+  margin-top: 0;
 }

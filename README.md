@@ -137,6 +137,56 @@ $ npm start
 
 ---
 
+## Demonstração — Frontend (fluxo em imagens)
+
+<p align="center">
+  <img src="./frontend/figures/page_1_inicial.png" width="920" />
+  <br/><em>1) Tela inicial em <code>/tasks</code> com formulário e lista paginada.</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_2_0_titulo_obrigatorio.png" width="920" />
+  <br/><em>2) Validação: campos <strong>Título</strong> e seleção do projeto são obrigatórios.</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_2_1_escolher%20projeto.png" width="920" />
+  <br/><em>3) Seleção do <strong>Projeto</strong> carregado da API.</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_2_2_escolher%20tipo.png" width="920" />
+  <br/><em>4) Escolha do <strong>Status</strong> (OPEN / IN_PROGRESS / DONE).</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_3_habilita_criar_tarefa.png" width="920" />
+  <br/><em>5) Formulário preenchido com botão <strong>Criar tarefa</strong> habilitado.</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_4_tarefa%20criada.png" width="920" />
+  <br/><em>6) Tarefa criada e exibida na tabela (projeto, status, data de criação).</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_5_atualiza%20lista.png" width="920" />
+  <br/><em>7) Ação <strong>Atualizar lista</strong> mostrando estado de carregamento.</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_6_excluir_tarefa.png" width="920" />
+  <br/><em>8) Confirmação de exclusão.</em>
+</p>
+
+<p align="center">
+  <img src="./frontend/figures/page_7_tarefa_excluida.png" width="920" />
+  <br/><em>9) Feedback de sucesso: tarefa excluída.</em>
+</p>
+Caso selecionado botão "Cancelar", volta para a página da figura 6.
+
+---
+
 ## **Exemplos de Requisições (API)**
 
 Listar tarefas (com paginação):
@@ -169,6 +219,19 @@ Listar projetos:
 ```bash
 GET http://localhost:8080/tasks/projects
 ```
+
+---
+
+---
+
+## **Experiência Flex - parte 4**
+
+<details>
+  <summary>Material interno (Flex/ActionScript)</summary>
+
+- [docs/FLEX_RESPOSTAS.md](docs/FLEX_RESPOSTAS.md)
+
+</details>
 
 ---
 
